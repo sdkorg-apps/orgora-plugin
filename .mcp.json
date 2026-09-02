@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "orgora-charts": {
+      "command": "${HOME}/.orgora/orgora-mcp",
+      "note": "Local stdio helper installed by the Orgora Charts Mac app (More → MCP connector → Enable). No network. Charts stay on this Mac. If the binary is missing, tell the user to Enable the connector in Orgora — this plugin does not download anything."
+    }
+  }
+}
