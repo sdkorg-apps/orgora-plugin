@@ -31,7 +31,8 @@ Homepage: [sdkaihub.com/orgora-charts](https://sdkaihub.com/orgora-charts/)
 
 > Add Jane Doe to the Acme chart after I confirm her LinkedIn URL.
 
-Hosted MCP: `https://orgora-mcp.sdkaihub.com/mcp`
+Hosted MCP: `https://orgora-mcp.sdkaihub.com/mcp` (OAuth Connect —
+Google or Microsoft; charts stay in that account’s Drive / OneDrive)
 
 ## Grok Build (Mac)
 

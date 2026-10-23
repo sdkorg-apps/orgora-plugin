@@ -2,7 +2,7 @@
   "mcpServers": {
     "orgora-charts-cloud": {
       "url": "https://orgora-mcp.sdkaihub.com/mcp",
-      "note": "Grok Bot / remote: user Connects Google or Microsoft (same SSO as Orgora). Charts stay in their Drive or OneDrive. Requires Authorization Bearer + X-Orgora-Provider from the Connect flow."
+      "note": "Grok Bot / remote: Connect discovers OAuth at orgora-mcp.sdkaihub.com (RFC 9728). User signs in with Google or Microsoft (same SSO as Orgora). Charts stay in their Drive or OneDrive."
     },
     "orgora-charts": {
       "command": "${HOME}/.orgora/orgora-mcp",
