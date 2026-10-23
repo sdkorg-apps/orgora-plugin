@@ -67,8 +67,9 @@ for that account.
 
 ## Security
 
-- **Cloud path:** user Bearer token to Drive/OneDrive only. This plugin does
-  not receive or store chart files on Orgora servers.
+- **Cloud path:** Connect issues an MCP token; the Worker uses the user’s
+  Drive/OneDrive grant for that session. Chart files stay in the user’s
+  cloud — Orgora does not host them.
 - **Local path:** stdio helper, no network, charts on this Mac.
 - **No mail credentials** in Orgora MCP.
 - **No LinkedIn scrape** — only a user-confirmed profile URL.
