@@ -72,7 +72,10 @@ contacts and `set_chart_logo` do not land on an unrelated chart.
 4. `add_person` with name + email; `manager_email` if known;
    `source_note` like `inbox, from:jane@acme.com`
 5. `update_person_contact_fields` only for **blank** title / phone / company
-6. **Company logo:** `set_chart_logo` for that confirmed domain only
+6. **Company logo:** only if `get_chart` shows no `logoFile` / company
+   website yet (or the user asks to replace) — then `set_chart_logo` for
+   that confirmed domain. Never overwrite an existing logo on a reused chart
+   without asking.
 7. **LinkedIn + photo:** for each key person, follow Name → LinkedIn → photo
 
 ## Company logo
@@ -80,16 +83,18 @@ contacts and `set_chart_logo` do not land on an unrelated chart.
 1. Infer website from company name or email domain (e.g. `jane@acme.com` →
    `acme.com`)
 2. Confirm with the user if ambiguous
-3. `set_chart_logo` with `website` + `source_note` — the server pulls the
-   favicon / apple-touch-icon from that site (not Clearbit)
-4. If lookup fails, ask for the correct website or skip
+3. Skip when the chart already has a logo/website unless they ask to replace
+4. Otherwise `set_chart_logo` with `website` + `source_note` — the server
+   pulls the favicon / apple-touch-icon from that site (not Clearbit)
+5. If lookup fails, ask for the correct website or skip
 
 ## Name → LinkedIn → photo
 
 1. Search publicly (web / X) only for a **plausible profile URL**
 2. Show the candidate to the user and wait for confirmation
 3. `set_person_linkedin` (or `add_person` with `linkedin_url`) only after
-   they confirm — never invent `/in/` URLs, never scrape LinkedIn HTML
+   they confirm — never invent `/in/` URLs, never scrape LinkedIn HTML.
+   LinkedIn is fill-only unless the user asks to replace (`replace=true`).
 4. If a **public headshot image URL** is already available from search, or
    the user shared a photo in chat, call `set_person_photo` with
    `image_url` or `image_base64` and `source_note`
