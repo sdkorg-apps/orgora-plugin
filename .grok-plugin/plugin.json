@@ -1,7 +1,7 @@
 {
   "name": "orgora",
-  "version": "1.1.1",
-  "description": "Private org charts for sales, marketing, consultants, and managers. Grok Bot Connects Google/Microsoft so charts sync to iPhone, Mac, and web via Drive/OneDrive. Mac desktop can also use the local Orgora MCP helper. Mail and screenshots come from Grok — Orgora never takes mailbox passwords.",
+  "version": "1.2.0",
+  "description": "Template Orgora bot: Connect Google/Microsoft, offer a chart from people you’ve spoken with, pull company logos, confirm LinkedIn URLs, and attach headshots. Charts sync to iPhone, Mac, and web via Drive/OneDrive. Mail and screenshots come from Grok — Orgora never takes mailbox passwords.",
   "author": {
     "name": "SDK AI Hub",
     "url": "https://sdkaihub.com"
@@ -14,6 +14,7 @@
     "orgora charts",
     "sdkaihub",
     "grok bot",
-    "mcp"
+    "mcp",
+    "template"
   ]
 }
