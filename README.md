@@ -23,9 +23,11 @@ This plugin is meant to run as an **automatic Orgora template** on Grok Bot:
 1. **Connect card first** — open Orgora Connect (same Google/Microsoft as the
    app) so tools can write to Drive/OneDrive.
 2. Ask: *Want me to make an org chart from people you’ve spoken with?*
-3. If yes (and mail is available): create the chart, add people, pull the
-   **company logo** from the website, find **LinkedIn** profiles (with
-   confirmation), and attach **headshots** when a public image is available.
+3. If yes (and mail is available): ask which **company / domain**, reuse or
+   create only that chart, filter mail contacts to that company, add people,
+   set the **company logo** only when the chart has none yet, find
+   **LinkedIn** profiles (with confirmation; fill-only unless replace), and
+   attach **headshots** when a public image is available.
 4. Charts show on iPhone, Mac, and web after refresh.
 
 ## Grok Bot
@@ -74,9 +76,9 @@ for mail → chart.
 | `list_charts` / `get_chart` / `search_people` | Read |
 | `create_chart` / `add_person` | Create (requires `source_note`) |
 | `update_person_contact_fields` | Fill blank title / phone / company only |
-| `set_chart_logo` | Fetch logo from company website |
-| `set_person_linkedin` | Confirmed LinkedIn `/in/` URL |
-| `set_person_photo` | Public image URL or base64 headshot |
+| `set_chart_logo` | Fetch logo from company website (skip if chart already has one unless asked) |
+| `set_person_linkedin` | Confirmed LinkedIn `/in/` URL (fill-only unless `replace=true`) |
+| `set_person_photo` | Public image URL or base64 headshot (fill-only unless `replace=true`) |
 
 Free-tier caps in Orgora still apply (3 charts, 30 people) unless Pro is on
 for that account.
