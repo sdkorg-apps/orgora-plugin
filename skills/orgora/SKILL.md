@@ -29,11 +29,16 @@ unauthorized / Connect missing:
 2. After Connect succeeds (or if already connected), ask once:
 
    > Want me to make an org chart from people you’ve spoken with
-   > (mail / calendar contacts Grok can already see)?
+   > (mail contacts Grok can already see)?
 
-3. If **yes** and a mail/inbox connector is available: run the mail → chart
-   flow below, then enrich logo + LinkedIn + photos.
-4. If **no** / no mail: ask which company or screenshot to start from.
+3. If **yes** and a mail/inbox connector is available:
+   - Ask which **company** (or primary email domain) this chart is for.
+   - Run the mail → chart flow below **scoped to that company** (reuse or
+     create only that company’s chart; filter contacts by that domain /
+     company name). Then enrich logo + LinkedIn + photos for that chart.
+4. If **no**, or no mail connector: ask which company or screenshot to
+   start from. Do not promise calendar-only spoken-with unless a calendar
+   connector is actually available and you will use it.
 
 ## Which MCP
 
@@ -57,16 +62,18 @@ as Orgora. Do not ask for passwords or paste tokens into chat.
 ## Build or update from mail (“spoken with”)
 
 Only when an **inbox / mail connector** Grok already allows is connected.
-Orgora does not sign into mail.
+Orgora does not sign into mail. Always pin a **company / domain** first so
+contacts and `set_chart_logo` do not land on an unrelated chart.
 
-1. `list_charts` — reuse a chart when it exists
-2. `create_chart` if needed (`source_note` required; free tier: 3 charts)
-3. `add_person` with name + email from mail; `manager_email` if known;
+1. Confirm company name or email domain (e.g. Acme / `acme.com`)
+2. `list_charts` — reuse a chart only when it matches that company; otherwise
+   `create_chart` (`source_note` required; free tier: 3 charts)
+3. From mail, take contacts whose email domain or company matches; skip others
+4. `add_person` with name + email; `manager_email` if known;
    `source_note` like `inbox, from:jane@acme.com`
-4. `update_person_contact_fields` only for **blank** title / phone / company
-5. **Company logo:** derive the domain from the company / email hosts →
-   `set_chart_logo` with that website
-6. **LinkedIn + photo:** for each key person, follow Name → LinkedIn → photo
+5. `update_person_contact_fields` only for **blank** title / phone / company
+6. **Company logo:** `set_chart_logo` for that confirmed domain only
+7. **LinkedIn + photo:** for each key person, follow Name → LinkedIn → photo
 
 ## Company logo
 
