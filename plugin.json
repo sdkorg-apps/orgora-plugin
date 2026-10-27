@@ -1,9 +1,10 @@
 {
   "name": "orgora",
-  "version": "1.3.0",
-  "description": "Template Orgora bot: Connect Google/Microsoft, offer a chart from people you\u2019ve spoken with, create use cases from email/Granola with plain-language pain and outcomes, tag people, and attach Drive document links. Charts sync to iPhone, Mac, and web via Drive/OneDrive.",
+  "version": "1.4.0",
+  "description": "Orgora Charts plugin for Grok Bot and Claude: Connect Google/Microsoft, list charts before create, logos, LinkedIn + CDN headshots, use cases, engagement. Charts sync to iPhone, Mac, and web via Drive/OneDrive.",
   "author": {
     "name": "SDK AI Hub",
+    "email": "support@sdkaihub.com",
     "url": "https://sdkaihub.com"
   },
   "homepage": "https://sdkaihub.com/orgora-charts/",
@@ -14,6 +15,7 @@
     "orgora charts",
     "sdkaihub",
     "grok bot",
+    "claude",
     "mcp"
   ]
 }

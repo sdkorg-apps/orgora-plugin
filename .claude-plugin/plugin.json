@@ -1,0 +1,27 @@
+{
+  "name": "orgora",
+  "displayName": "Orgora Charts",
+  "version": "1.4.0",
+  "description": "Private org charts for sales, marketing, consultants, and managers. Connect Google or Microsoft, list charts before creating, pull company logos, confirm LinkedIn URLs with CDN headshots, create use cases, and refresh Warm/Hot/Cold engagement. Charts sync to iPhone, Mac, and web via the user's Drive or OneDrive.",
+  "author": {
+    "name": "SDK AI Hub",
+    "email": "support@sdkaihub.com",
+    "url": "https://sdkaihub.com"
+  },
+  "homepage": "https://sdkaihub.com/orgora-charts/",
+  "repository": "https://github.com/sdkorg-apps/orgora-plugin",
+  "license": "MIT",
+  "keywords": [
+    "orgora",
+    "orgora charts",
+    "sdkaihub",
+    "mcp",
+    "claude",
+    "org chart",
+    "sales"
+  ],
+  "icon": "./assets/orgora_mark.png",
+  "documentationUrl": "https://sdkaihub.com/orgora-charts/",
+  "supportUrl": "mailto:support@sdkaihub.com",
+  "privacyPolicyUrl": "https://sdkaihub.com/orgora-charts/privacy.html"
+}
