@@ -120,20 +120,26 @@ notice newer mail for someone on the chart):
 ## Name → LinkedIn → photo
 
 1. Search publicly (web / X) only for a **plausible profile URL**
-2. Show the candidate to the user and wait for confirmation
-3. `set_person_linkedin` (or `add_person` with `linkedin_url`) only after
-   they confirm — never invent `/in/` URLs. LinkedIn URL is fill-only
-   unless the user asks to replace (`replace=true`).
-4. Leave `fetch_photo` at its default (**true**). The cloud Worker fetches
-   the **public** profile page for JSON-LD / `og:image` (`media.licdn.com`)
-   and attaches the headshot when LinkedIn exposes one without login —
-   same idea as in-app Refresh.
-5. If the tool returns `photo.status` of `authwalled` or `no_photo`, ask
-   the user for a headshot in chat and call `set_person_photo` with
-   `image_url` / `image_base64`, or tell them to use the Orgora Clipper
-   while signed in to LinkedIn. A known `media.licdn.com` URL from search
-   may also go straight to `set_person_photo`.
-6. Photos are fill-only unless the user asks to replace (`replace=true`)
+2. While searching, also capture any **`media.licdn.com` headshot URL**
+   shown for that profile (search result thumbnail / og:image). Keep it.
+3. Show the candidate `/in/` URL to the user and wait for confirmation
+4. After confirm, call `set_person_linkedin` (or `add_person`) with:
+   - `linkedin_url` (confirmed)
+   - **`image_url` = that `media.licdn.com` URL when you have one**
+   - `source_note`
+   Never invent `/in/` URLs. LinkedIn URL is fill-only unless
+   `replace=true`.
+5. **Important:** the cloud Worker usually **cannot** scrape LinkedIn
+   profile HTML (LinkedIn returns HTTP 999 → `photo.status=blocked`).
+   CDN image download **does** work. Do **not** stop after saving only
+   the `/in/` URL — always attach the photo via `image_url` when search
+   showed one.
+6. If `photo.status` is `blocked`, `authwalled`, `no_photo`, or `failed`:
+   - Immediately `set_person_photo` with the `media.licdn.com` `image_url`
+     from search (or `image_base64` if the user pasted a photo)
+   - Else ask for a headshot in chat, or tell them to use the Orgora
+     Clipper while signed in to LinkedIn
+7. Photos are fill-only unless the user asks to replace (`replace=true`)
 
 ## Build from a screenshot in this chat
 

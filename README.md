@@ -27,8 +27,8 @@ This plugin is meant to run as an **automatic Orgora template** on Grok Bot:
    create only that chart, filter mail contacts to that company, add people,
    set the **company logo** only when the chart has none yet, find
    **LinkedIn** profiles (with confirmation; fill-only unless replace),
-   attach **headshots** from the public profile photo when LinkedIn exposes
-   one (or from a chat / public image URL), and refresh **Warm/Hot/Cold**
+   attach **headshots** via `media.licdn.com` `image_url` from search
+   (cloud HTML scrape is often blocked), and refresh **Warm/Hot/Cold**
    from mail activity (`record_person_engagement` /
    `refresh_chart_engagement` — on demand or once per turn).
 4. Charts show on iPhone, Mac, and web after refresh.
@@ -80,8 +80,8 @@ for mail → chart.
 | `create_chart` / `add_person` | Create (requires `source_note`) |
 | `update_person_contact_fields` | Fill blank title / phone / company only |
 | `set_chart_logo` | Fetch logo from company website (skip if chart already has one unless asked) |
-| `set_person_linkedin` | Confirmed LinkedIn `/in/` URL (fill-only unless `replace=true`); default `fetch_photo` attaches public headshot when available |
-| `set_person_photo` | Public image URL (incl. `media.licdn.com`) or base64 headshot (fill-only unless `replace=true`) |
+| `set_person_linkedin` | Confirmed LinkedIn `/in/` URL; pass `image_url` (`media.licdn.com` from search) — HTML scrape is often blocked (HTTP 999) from cloud |
+| `set_person_photo` | Public image URL (incl. `media.licdn.com`) or base64 headshot; use when LinkedIn scrape returns `blocked` / `authwalled` |
 | `record_person_engagement` | Forward-only `last_email_at` / `email_count` so Warm/Hot/Cold refreshes |
 | `refresh_chart_engagement` | Batch on-demand engagement poll from mail activity |
 
