@@ -5,10 +5,10 @@ description: >
   consultants, and managers. Use when the user mentions Orgora, Orgora
   Charts, mapping a buying committee or client org, screenshots of orgs,
   LinkedIn names into Orgora, company logos, headshots, or runs /orgora.
-  Prefer the cloud Orgora MCP on Grok Bot so iPhone, Mac, and web stay in
-  sync; use the Mac local MCP only for Grok Build / desktop when cloud is
-  unavailable. On first turn, open Connect and offer a chart from people
-  they have spoken with.
+  Prefer the cloud Orgora MCP (Claude connector / Grok Bot / Cursor) so
+  iPhone, Mac, and web stay in sync; use the Mac local MCP only on desktop
+  when cloud is unavailable. On first turn, open Connect and offer a chart
+  from people they have spoken with.
 ---
 
 # Orgora Charts
@@ -29,7 +29,7 @@ unauthorized / Connect missing:
 2. After Connect succeeds (or if already connected), ask once:
 
    > Want me to make an org chart from people you’ve spoken with
-   > (mail contacts Grok can already see)?
+   > (mail contacts this chat can already see)?
 
 3. If **yes** and a mail/inbox connector is available:
    - Ask which **company** (or primary email domain) this chart is for.
@@ -42,17 +42,20 @@ unauthorized / Connect missing:
 
 ## Which MCP
 
-1. **Grok Bot / cloud** — `orgora-charts-cloud` at
+1. **Cloud (preferred)** — `orgora-charts-cloud` at
    `https://orgora-mcp.sdkaihub.com/mcp` after the user Connects Orgora
-   (Google or Microsoft). Writes appear on iPhone, Mac, and web.
-2. **Mac local (Grok Build)** — `orgora-charts` stdio helper at
-   `~/.orgora/orgora-mcp` after **Orgora Charts → Account → MCP connector →
-   Enable**. If missing, tell them to Enable; do not download binaries.
+   (Google or Microsoft). Same URL for Claude custom connectors, Claude
+   plugins, Grok Bot, and Cursor. Writes appear on iPhone, Mac, and web.
+2. **Mac local** — `orgora-charts` stdio helper at `~/.orgora/orgora-mcp`
+   after **Orgora Charts → Account → MCP connector → Enable** (Claude
+   Desktop / Grok Build / Cursor desktop). If missing, tell them to Enable;
+   do not download binaries. Claude.ai and Cowork use the cloud URL only.
 
-## If cloud MCP is missing on Grok Bot
+## If cloud MCP is missing or unauthorized
 
-Open / surface the **Orgora Connect** card again. Same Google or Microsoft
-as Orgora. Do not ask for passwords or paste tokens into chat.
+Open / surface the **Orgora Connect** card again (or ask them to Connect
+the Orgora Charts connector in Claude Customize → Connectors). Same Google
+or Microsoft as Orgora. Do not ask for passwords or paste tokens into chat.
 
 ## Read a chart
 
@@ -61,7 +64,7 @@ as Orgora. Do not ask for passwords or paste tokens into chat.
 
 ## Build or update from mail (“spoken with”)
 
-Only when an **inbox / mail connector** Grok already allows is connected.
+Only when an **inbox / mail connector** this host already allows is connected.
 Orgora does not sign into mail. Always pin a **company / domain** first so
 contacts and `set_chart_logo` do not land on an unrelated chart.
 
@@ -192,7 +195,7 @@ notice newer mail for someone on the chart):
 1. Read the image (org chart, slide, badge, email header)
 2. Propose people and reporting lines; ask once if ambiguous
 3. `create_chart` / `add_person` with `source_note` like
-   `screenshot in Grok chat`
+   `screenshot in chat`
 4. Do not invent emails or LinkedIn URLs from a blurry image
 5. Offer logo + LinkedIn enrichment after the skeleton is saved
 

@@ -1,12 +1,14 @@
 {
   "mcpServers": {
     "orgora-charts-cloud": {
+      "type": "http",
       "url": "https://orgora-mcp.sdkaihub.com/mcp",
-      "note": "Grok Bot / remote: Connect discovers OAuth at orgora-mcp.sdkaihub.com (RFC 9728). User signs in with Google or Microsoft (same SSO as Orgora). Charts stay in their Drive or OneDrive."
+      "note": "Claude / Grok Bot / Cursor remote: Connect discovers OAuth at orgora-mcp.sdkaihub.com (RFC 9728). User signs in with Google or Microsoft (same SSO as Orgora). Charts stay in their Drive or OneDrive."
     },
     "orgora-charts": {
+      "type": "stdio",
       "command": "${HOME}/.orgora/orgora-mcp",
-      "note": "Mac desktop / Grok Build only. Local stdio helper from Orgora Charts → MCP connector → Enable. No network. If missing, tell the user to Enable — this plugin does not download a binary."
+      "note": "Mac desktop local helper from Orgora Charts → MCP connector → Enable. No network. Claude.ai / Cowork ignore stdio; use the cloud URL above there. If missing, tell the user to Enable — this plugin does not download a binary."
     }
   }
 }
