@@ -26,9 +26,11 @@ This plugin is meant to run as an **automatic Orgora template** on Grok Bot:
 3. If yes (and mail is available): ask which **company / domain**, reuse or
    create only that chart, filter mail contacts to that company, add people,
    set the **company logo** only when the chart has none yet, find
-   **LinkedIn** profiles (with confirmation; fill-only unless replace), and
+   **LinkedIn** profiles (with confirmation; fill-only unless replace),
    attach **headshots** from the public profile photo when LinkedIn exposes
-   one (or from a chat / public image URL).
+   one (or from a chat / public image URL), and refresh **Warm/Hot/Cold**
+   from mail activity (`record_person_engagement` /
+   `refresh_chart_engagement` — on demand or once per turn).
 4. Charts show on iPhone, Mac, and web after refresh.
 
 ## Grok Bot
