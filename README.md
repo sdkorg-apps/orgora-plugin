@@ -27,7 +27,8 @@ This plugin is meant to run as an **automatic Orgora template** on Grok Bot:
    create only that chart, filter mail contacts to that company, add people,
    set the **company logo** only when the chart has none yet, find
    **LinkedIn** profiles (with confirmation; fill-only unless replace), and
-   attach **headshots** when a public image is available.
+   attach **headshots** from the public profile photo when LinkedIn exposes
+   one (or from a chat / public image URL).
 4. Charts show on iPhone, Mac, and web after refresh.
 
 ## Grok Bot
@@ -77,8 +78,8 @@ for mail → chart.
 | `create_chart` / `add_person` | Create (requires `source_note`) |
 | `update_person_contact_fields` | Fill blank title / phone / company only |
 | `set_chart_logo` | Fetch logo from company website (skip if chart already has one unless asked) |
-| `set_person_linkedin` | Confirmed LinkedIn `/in/` URL (fill-only unless `replace=true`) |
-| `set_person_photo` | Public image URL or base64 headshot (fill-only unless `replace=true`) |
+| `set_person_linkedin` | Confirmed LinkedIn `/in/` URL (fill-only unless `replace=true`); default `fetch_photo` attaches public headshot when available |
+| `set_person_photo` | Public image URL (incl. `media.licdn.com`) or base64 headshot (fill-only unless `replace=true`) |
 
 Free-tier caps in Orgora still apply (3 charts, 30 people) unless Pro is on
 for that account.
@@ -90,8 +91,10 @@ for that account.
   cloud — Orgora does not host them.
 - **Local path:** stdio helper, no network, charts on this Mac.
 - **No mail credentials** in Orgora MCP.
-- **No LinkedIn scrape** — only a user-confirmed profile URL; photos from
-  public image URLs or chat bytes, not LinkedIn HTML.
+- **LinkedIn:** only a user-confirmed `/in/` URL (never invent a slug). The
+  cloud Worker may then fetch that **public** profile for a headshot
+  (JSON-LD / og:image). Authwalls are normal — fall back to chat photo or
+  the Orgora Clipper.
 - **Fill-only** on existing contact fields; nothing is deleted.
 
 ## License
