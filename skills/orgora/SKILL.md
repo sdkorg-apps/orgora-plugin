@@ -95,6 +95,37 @@ The server stores each touch point as its own bullet line
 dates into one paragraph on `add_person.notes`. Do not use
 `update_person_contact_fields` for notes (it cannot change notes).
 
+## Use cases from email / Granola (pain · outcome · people · docs)
+
+When mail, Granola, or meeting notes describe a **problem the org is
+trying to solve** (not just a touch point on one person):
+
+1. Pin the chart (`list_charts` / company scope)
+2. Find the right people (`search_people`) — who owns the pain, who cares
+   about the outcome
+3. Call **`create_use_case`** with:
+   - `name` — short label
+   - `pain` — what hurts today, in **plain words a 10-year-old could
+     understand** (real pain; no jargon or buzzwords)
+   - `outcome` — what better looks like, same plain language (a **real
+     positive result**, not vague “efficiency”)
+   - `person_ids` — tag those people
+   - `document_links` — optional `[{url, label?}]` https links the user
+     already has in **Google Drive / OneDrive / SharePoint** (proposal,
+     quote, SOW, deck). Orgora stores the **link only** — never upload
+     files. Ask for the share link if they mention a doc but do not paste
+     one.
+   - `source_note` (e.g. `Granola notes 2026-10-27` or
+     `inbox thread with jane@acme.com`)
+4. Still put chronological meeting bullets on people via
+   `append_person_notes` — use cases are the shared problem story; notes
+   are the timeline.
+5. Refine later with **`update_use_case`** (`people_mode` /
+   `document_links_mode`: `add` or `set`). Read with `list_use_cases`.
+
+Do not invent Drive URLs. Do not invent people. Prefer one clear use case
+over a wall of vague themes.
+
 ## Lead status / engagement (Warm · Hot · Cold)
 
 Lead badges come from `last_email_at` + `email_count` (same rules as the
