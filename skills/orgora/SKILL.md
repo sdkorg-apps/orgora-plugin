@@ -99,8 +99,8 @@ contacts and `set_chart_logo` do not land on an unrelated chart.
    the **public** profile page for JSON-LD / `og:image` (`media.licdn.com`)
    and attaches the headshot when LinkedIn exposes one without login —
    same idea as in-app Refresh.
-5. If the tool returns `photo_status=authwalled` or `no_photo`, ask the
-   user for a headshot in chat and call `set_person_photo` with
+5. If the tool returns `photo.status` of `authwalled` or `no_photo`, ask
+   the user for a headshot in chat and call `set_person_photo` with
    `image_url` / `image_base64`, or tell them to use the Orgora Clipper
    while signed in to LinkedIn. A known `media.licdn.com` URL from search
    may also go straight to `set_person_photo`.
