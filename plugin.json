@@ -1,7 +1,7 @@
 {
   "name": "orgora",
-  "version": "1.2.0",
-  "description": "Template Orgora bot: Connect Google/Microsoft, offer a chart from people you’ve spoken with, pull company logos, confirm LinkedIn URLs, and attach headshots. Charts sync to iPhone, Mac, and web via Drive/OneDrive. Mail and screenshots come from Grok — Orgora never takes mailbox passwords.",
+  "version": "1.3.0",
+  "description": "Template Orgora bot: Connect Google/Microsoft, offer a chart from people you\u2019ve spoken with, create use cases from email/Granola with plain-language pain and outcomes, tag people, and attach Drive document links. Charts sync to iPhone, Mac, and web via Drive/OneDrive.",
   "author": {
     "name": "SDK AI Hub",
     "url": "https://sdkaihub.com"
