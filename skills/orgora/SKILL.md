@@ -80,6 +80,21 @@ contacts and `set_chart_logo` do not land on an unrelated chart.
 8. **Lead status (Warm/Hot/Cold):** after people are on the chart, refresh
    engagement from mail (see below)
 
+## Meeting / Granola touch-point notes
+
+When the user (or Granola / meeting notes) has **multiple touch points**
+with different dates for someone on a chart:
+
+1. Find the person (`search_people` / `get_chart`)
+2. Call **`append_person_notes`** — one entry per date (prefer
+   `occurred_at` + short `note`, or `entries[{text, occurred_at}]`)
+3. Always pass `source_note` (e.g. `Granola notes 2026-10-27`)
+
+The server stores each touch point as its own bullet line
+(`- YYYY-MM-DD: …`) so notes stay scannable. Do **not** smash several
+dates into one paragraph on `add_person.notes`. Do not use
+`update_person_contact_fields` for notes (it cannot change notes).
+
 ## Lead status / engagement (Warm · Hot · Cold)
 
 Lead badges come from `last_email_at` + `email_count` (same rules as the
