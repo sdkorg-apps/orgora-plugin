@@ -93,12 +93,18 @@ contacts and `set_chart_logo` do not land on an unrelated chart.
 1. Search publicly (web / X) only for a **plausible profile URL**
 2. Show the candidate to the user and wait for confirmation
 3. `set_person_linkedin` (or `add_person` with `linkedin_url`) only after
-   they confirm — never invent `/in/` URLs, never scrape LinkedIn HTML.
-   LinkedIn is fill-only unless the user asks to replace (`replace=true`).
-4. If a **public headshot image URL** is already available from search, or
-   the user shared a photo in chat, call `set_person_photo` with
-   `image_url` or `image_base64` and `source_note`
-5. Photos are fill-only unless the user asks to replace (`replace=true`)
+   they confirm — never invent `/in/` URLs. LinkedIn URL is fill-only
+   unless the user asks to replace (`replace=true`).
+4. Leave `fetch_photo` at its default (**true**). The cloud Worker fetches
+   the **public** profile page for JSON-LD / `og:image` (`media.licdn.com`)
+   and attaches the headshot when LinkedIn exposes one without login —
+   same idea as in-app Refresh.
+5. If the tool returns `photo.status` of `authwalled` or `no_photo`, ask
+   the user for a headshot in chat and call `set_person_photo` with
+   `image_url` / `image_base64`, or tell them to use the Orgora Clipper
+   while signed in to LinkedIn. A known `media.licdn.com` URL from search
+   may also go straight to `set_person_photo`.
+6. Photos are fill-only unless the user asks to replace (`replace=true`)
 
 ## Build from a screenshot in this chat
 
