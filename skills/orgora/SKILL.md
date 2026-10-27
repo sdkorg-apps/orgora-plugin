@@ -77,6 +77,35 @@ contacts and `set_chart_logo` do not land on an unrelated chart.
    that confirmed domain. Never overwrite an existing logo on a reused chart
    without asking.
 7. **LinkedIn + photo:** for each key person, follow Name → LinkedIn → photo
+8. **Lead status (Warm/Hot/Cold):** after people are on the chart, refresh
+   engagement from mail (see below)
+
+## Lead status / engagement (Warm · Hot · Cold)
+
+Lead badges come from `last_email_at` + `email_count` (same rules as the
+device mailbox sync). Manual overrides in the app are left alone — never
+set `leadStatusOverride` via MCP.
+
+**On demand** (user asks to refresh lead status / warmth, or after you
+notice newer mail for someone on the chart):
+
+1. From the mail connector, for matching people note latest message time
+   and optional absolute message count
+2. One person: `record_person_engagement` with `person_id`,
+   `last_email_at` and/or `email_count`, and `source_note`
+3. Many people: `refresh_chart_engagement` with `activities`
+   (`person_id` or `email` + `last_email_at` / `email_count`) and
+   `source_note`
+
+**Periodic / turn-scoped poll** (no Worker cron — do this in the turn):
+
+- When the user opens an Orgora chart conversation, or asks “who’s warm”,
+  and a mail connector is available: `get_chart` / `search_people`, then
+  `refresh_chart_engagement` for people with emails using the latest
+  connector activity. Cap to the active chart / company domain.
+- Engagement is **forward-only**: newer dates and higher counts win;
+  older polls never regress Warm/Hot/Cold.
+- Tell the user to refresh Orgora on iPhone / Mac / web after writes
 
 ## Company logo
 
